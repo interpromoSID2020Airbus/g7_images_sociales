@@ -12,4 +12,6 @@ This csv contains  :
 Each csv has two columns : 'Picture name' and 'View', which indicates the viewpoint of the picture ('Int' : interior, 'Ext' : exterior, 'Ext_int' : pictur took inside the plane but pointing towards the outside, 'Meal' for food trail and 'Others')
  
  ### g7_crea_SEATGURU_annotate : Add a column with the viewpoint to g7_SEATGURU.csv (g7_SEATGURU_annotate.csv)
+ 
+ 
 
