@@ -29,7 +29,7 @@ Each csv has two columns : 'Picture name' and 'View', which indicates the viewpo
  - g7_SEATGURU_Ext.csv
  - g7_SEATGURU_Ext_Int.csv
  - g7_SEATGURU_Int.csv
- - g7_SEATGURU_annotate.csv
+ - g7_SEATGURU_annotate.csv (final csv, containing all the informations)
  
  ## Preprocessing : Functions to use to crop the data or for data augmentation
  
