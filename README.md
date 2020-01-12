@@ -1,5 +1,13 @@
 # G7_images_sociales_2020
 
+## G7_scrapping : codes used to scrap some websites
+
+### 
+
+###
+
+### 
+
 ## Crea_dataframes : folder with the codes to create all the csv files for Group 7
 
 ### g7_crea_df_SEATGURU : Creation of a csv file (g7_SEATGURU.csv)
@@ -21,8 +29,13 @@ Each csv has two columns : 'Picture name' and 'View', which indicates the viewpo
  - g7_SEATGURU_Ext.csv
  - g7_SEATGURU_Ext_Int.csv
  - g7_SEATGURU_Int.csv
- - g7_SEATGURU_Others.csv
  - g7_SEATGURU_annotate.csv
+ 
+ ## Preprocessing : Functions to use to crop the data or for data augmentation
+ 
+ ## Deep learning : Best algorithms
+ 
+ 
  
  
  
