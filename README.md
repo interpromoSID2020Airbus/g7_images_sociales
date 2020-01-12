@@ -14,6 +14,9 @@ Each csv has two columns : 'Picture name' and 'View', which indicates the viewpo
  ### g7_crea_SEATGURU_annotate : Add a column with the viewpoint to g7_SEATGURU.csv (g7_SEATGURU_annotate.csv)
  
  ## CSV_annotate : Csv files generated using the codes of the previous folder
+ 
+ ### SEATGURU :
+ 
  - g7_SEATGURU.csv
  - g7_SEATGURU_Ext.csv
  - g7_SEATGURU_Ext_Int.csv
