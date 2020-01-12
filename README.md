@@ -1,6 +1,6 @@
 # G7_images_sociales_2020
 
-## G7_scrapping : codes used to scrap some websites
+## Scrapping : codes used to scrap some websites
 
 ### 
 
