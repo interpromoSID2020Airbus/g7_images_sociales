@@ -4,9 +4,9 @@ from keras.preprocessing.image import ImageDataGenerator
 from PIL import Image
 
 
-def data_augmentation(train_path: str, rotation_range: int=40, width_shift_range:float=.2, 
-                      height_shift_range: float=.2, shear_range: float=.2, zoom_range: float=.2,
-                      horizontal_flip: bool=True, nb_img: int=10):
+def data_augmentation(train_path: str, rotation_range: int=10, width_shift_range:float=.1, 
+                      height_shift_range: float=.1, shear_range: float=.2, zoom_range: float=.09,
+                      horizontal_flip: bool=False, nb_img: int=10):
     
     classes = os.listdir(train_path)
     
