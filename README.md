@@ -1,43 +1,58 @@
-# G7_images_sociales_2020
+# <h1 align='center'>g7 - *Images sociales*</h1>
+<p align="justify">
 
-## Scrapping : codes used to scrap some websites
+## Context
+This repository contains code and results files........................ etc.
 
-### 
+Group 7 was in charge of making predicitons on images scrapped from social media: Instagram and Seatguru. Neural networks were used to predict several levels of classes: general view (aircraft interior / exterior / exterior viewed through a window / meal tray), aircraft manufacturer, and aircraft type.
 
-###
+## Contributors
+* Vincent Barudio
+* Manoel Da Ponte
+* Cheick Diop
+* Lilian Dulinge
+* Anissa Goulif
+* Emma Grandgirard
+* Gaëlle Hyvert
+* Christelle Latorre
+* Paul Sinel--boucher
+* Farid Talmat Ammar
 
-### 
 
-## Crea_dataframes : folder with the codes to create all the csv files for Group 7
+Under the supervision of Jérôme Farinas. 
 
-### g7_crea_df_SEATGURU : Creation of a csv file (g7_SEATGURU.csv)
-This csv contains  : 
-  - the informations found in the title:  manufacturer, aircraft_type
-  - informations regarding the image format
+&nbsp;
+## Contents
+### `Scrapping`
+Codes used to scrap Airliners and Google Images in order to get Airbus and Boeing images of several aircraft types.
+* ...
 
-  
- ### g7_csv_by_label_SEATGURU  : Creation of a csv file by label (g7_SEATGURU_Ext.csv, g7_SEATGURU_Ext_Int.csv, g7_SEATGURU_Int.csv, g7_SEATGURU_Meal.csv, g7_SEATGURU_Others.csv)
-Each csv has two columns : 'Picture name' and 'View', which indicates the viewpoint of the picture ('Int' : interior, 'Ext' : exterior, 'Ext_int' : picture taken inside the plane but pointing towards the outside, 'Meal' for food trail and 'Others')
  
- ### g7_crea_SEATGURU_annotate : Add a column with the viewpoint to g7_SEATGURU.csv (g7_SEATGURU_annotate.csv)
- 
- ## CSV_annotate : Csv files generated using the codes of the previous folder
- 
- ### SEATGURU :
- 
- - g7_SEATGURU.csv
- - g7_SEATGURU_Ext.csv
- - g7_SEATGURU_Ext_Int.csv
- - g7_SEATGURU_Int.csv
- - g7_SEATGURU_annotate.csv (final csv, containing all the informations)
- 
- ## Preprocessing : Functions to use to crop the data or for data augmentation
- 
- ## Deep learning : Best algorithms
- 
- 
- 
- 
- 
- 
+&nbsp;
+### `Crea_dataframes`
+Folder with the codes to create csv files filled with:
+* information found in the titles:  manufacturer, aircraft_type;
+* information regarding images formats.
+
+Each csv has two columns: 'Picture name' and 'View', which indicates the viewpoint of the picture ('Int': interior, 'Ext': exterior, 'Ext_int': picture taken inside the plane but pointing towards the outside, 'Meal' for food trail and 'Others')
+
+&nbsp;
+### `CSV_annotate`
+DataFrames created by using functions from Crea_dataframes folder.
+
+
+#### SEATGURU
+* g7_SEATGURU.csv
+* g7_SEATGURU_Ext.csv
+* g7_SEATGURU_Ext_Int.csv
+* g7_SEATGURU_Int.csv
+* g7_SEATGURU_annotate.csv (final csv, containing all information)
+
+##### Hackathon
+?
+
+&nbsp;
+### `Deep learning`
+The deep learning algorithms which performed best:
+* ...
 
