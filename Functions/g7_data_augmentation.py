@@ -85,6 +85,6 @@ def data_augmentation(train_path: str, shape: tuple, save_format: str='jpeg', nb
                                           save_prefix=class_ + '/' + class_ + '_' + new_imgs_names[j],
                                           save_format=save_format):
                     i += 1
-                    if i > coef_gen:
+                    if i >= coef_gen:
                         break
         
