@@ -22,11 +22,10 @@ Group 7 was in charge of making predicitons on images scrapped from social media
 Under the supervision of Jérôme Farinas. 
 
 &nbsp;
-# Contents
-## 1 Environment
-### 1.1 Python version and libraries
+## Environment
+### Python version and libraries
 
-### 1.2 Paths
+### Paths
 * project_path
 * scrap_path
 * hack_path
@@ -34,18 +33,19 @@ Under the supervision of Jérôme Farinas.
 * instgram_path
 
 &nbsp;
-## 2 `Scrapping`
+# Contents
+## 1 `Scrapping`
 Codes used to scrap Airliners and Google Images in order to get Airbus and Boeing images of several aircraft types.
 
-### 2.1 Airliners
+### 1.1 Airliners
 * g7_df_airliners.ipynb (DataFrame creation)
 * g7_df_airliners_img.ipynb (get images)
 
-### 2.2 Google Images
+### 1.2 Google Images
 * g7_google.ipynb (DataFrame + get images)
  
 &nbsp;
-## 3 `ImagesStats`
+## 2 `ImagesStats`
 Folder with the codes to create csv files filled with:
 * information found in the titles:  manufacturer, aircraft_type;
 * information regarding images formats.
@@ -58,14 +58,14 @@ Each csv has two columns: 'Picture name' and 'View', which indicates the viewpoi
 
 
 &nbsp;
-## 4 `DeepLearning`
+## 3 `DeepLearning`
 DataFrames created by using functions from Crea_dataframes folder.
 
-### 4.1 Functions
+### 3.1 Functions
 * A notebook with basic functions (e.g. create folders, train test split)
 * A notebook with specific functions (e.g. data cropping, data augmentation)
 
-### 4.2 Models
+### 3.2 Models
 The deep learning algorithms which performed best:
 * g7_view.ipynb
 * g7_ext.ipynb
@@ -77,9 +77,9 @@ The deep learning algorithms which performed best:
 Nb: put data augmentation as an option in relevant notebooks.
 
 &nbsp;
-### 5 `Pipeline`
+### 4 `Pipeline`
 
 &nbsp;
-### 6 `Results`
+### 5 `Results`
 - csv files obtained from pipeline
 - Code to compute evaluation scores + stats
