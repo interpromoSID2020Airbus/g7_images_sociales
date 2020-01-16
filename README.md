@@ -9,7 +9,7 @@ Group 7 was in charge of making predicitons on images scrapped from social media
 # Contributors
 * Vincent Barudio
 * Manoel Da Ponte
-* Cheick Diop
+* Cheikh Diop
 * Lilian Dulinge
 * Anissa Goulif
 * Emma Grandgirard
@@ -74,6 +74,7 @@ The deep learning algorithms which performed best:
 * g7_int_Boeing.ipynb
  
 + Models in `h5`format, handed in separately.
+
 Nb: put data augmentation as an option in relevant notebooks.
 
 &nbsp;
