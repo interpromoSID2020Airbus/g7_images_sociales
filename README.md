@@ -22,10 +22,10 @@ Group 7 was in charge of making predicitons on images scrapped from social media
 Under the supervision of Jérôme Farinas. 
 
 &nbsp;
-## Environment
-### Python version and libraries
+# Environment
+## Python version and libraries
 
-### Paths
+## Paths
 * project_path
 * scrap_path
 * hack_path
