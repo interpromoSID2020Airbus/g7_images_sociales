@@ -33,10 +33,10 @@ Please make sure your files are organised as follows:
 
 Paths defined in code files (you might have to set project_path yourself): 
 * project_path: 
-* scrap_path
-* hack_path
-* seatguru_path
-* instgram_path
+* scrap_path: 
+* hack_path: 
+* seatguru_path: 
+* instgram_path: 
 
 &nbsp;
 # Contents
@@ -89,7 +89,7 @@ For each notebook, the output is a model in `h5`format, along with a pickle file
 NB: in each notebook, a cell dedicated to data augmentation can be (un)commented at your convenience. [EXPLAIN WHY DATA AUGMENTATION WAS USEFUL/USELESS IN DIFFERENT CASES]
 
 &nbsp;
-## 4 `Pipeline`
+## 4 `Results`
 You can run `g7_pipeline.ipynb` file to perform all our models on images folders.
 Before launching the pipeline, set the following parameters:
 ```
@@ -102,8 +102,7 @@ After a pipeline run, you will find CSV files containing predictions in your `Re
 
 
 &nbsp;
-## 5 `Results`
-This folder contains: 
+This folder also contains: 
 * CSV files obtained from pipeline
 * Code to compute evaluation scores + stats.
 
