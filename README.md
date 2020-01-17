@@ -40,24 +40,17 @@ Paths defined in code files (you might have to set project_path yourself):
 
 &nbsp;
 # Contents
-## 1 `Scrapping`
+## 1 `Scraping`
 Codes used to scrap Airliners and Google Images in order to get Airbus and Boeing images of several aircraft types.
 We chose to enrich our images datasets to perform supervised learning for aircraft exteriors detection.
-
-### 1.1 Airliners
-* g7_df_airliners.ipynb: creates a DataFrame with web links of images to be scrapped.
-* g7_df_airliners_img.ipynb: performs scrapping.
-
-### 1.2 Google Images
-* g7_google.ipynb: creates a DataFrame and performs scrapping.
-
+`g7_scraping.ipynb`: one single notebook that creates a DataFrame with web links of images to be scrapped, and then performs scrapping.
 All images scrapped, along with the CSV files containing the DataFrames, will be handed in separately.
 
  
 &nbsp;
 ## 2 `ImagesStats`
 Folder with the codes to create csv files filled with:
-* information found in the titles:  manufacturer, aircraft_type;
+* information found in the titles: manufacturer, aircraft_type;
 * information regarding images formats.
 
 Each csv has two columns: 'Picture name' and 'View', which indicates the viewpoint of the picture ('Int': interior, 'Ext': exterior, 'Ext_int': picture taken inside the plane but pointing towards the outside, 'Meal' for food trail and 'Others')
@@ -65,6 +58,7 @@ Each csv has two columns: 'Picture name' and 'View', which indicates the viewpoi
 * g7_seatguru.ipynb + csv
 * g7_instagram.ipynb + csv 
 * g7_hackathon.ipynb + csv
+[MERGE IN ONE SINGLE NOTEBOOK]
 
 
 &nbsp;
