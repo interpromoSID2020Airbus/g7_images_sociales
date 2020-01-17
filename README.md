@@ -28,10 +28,11 @@ The following librairies must be installed: ...
 &nbsp;
 ## Tree
 Please make sure your files are organised as follows:
-[insert tree diagram]
+&nbsp;
+![](README_images/g7_tree.png?raw=true)
 
 Paths defined in code files (you might have to set project_path yourself): 
-* project_path
+* project_path: 
 * scrap_path
 * hack_path
 * seatguru_path
