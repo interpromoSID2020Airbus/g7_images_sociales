@@ -64,13 +64,16 @@ Each csv has two columns: 'Picture name' and 'View', which indicates the viewpoi
 
 &nbsp;
 ## 3 `DeepLearning`
-DataFrames created by using functions from Crea_dataframes folder.
-
 ### 3.1 Functions
 * A notebook with basic functions (e.g. create folders, train test split)
 * A notebook with specific functions (e.g. data cropping, data augmentation)
 
 ### 3.2 Models
+[DEEP LEARNING / PIPELINE EXPLANATIONS]
+&nbsp;
+![](README_images/g7_pipeline.png?raw=true)
+
+&nbsp;
 The deep learning algorithms which performed best. The following notebooks train models to predict:
 
 * `g7_view.ipynb`: the viewpoint of an image (interior, exterior, exterior viewed from a window, meal tray, or other)
