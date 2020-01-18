@@ -45,6 +45,7 @@ Codes used to scrap Airliners and Google Images in order to get Airbus and Boein
 We chose to enrich our images datasets to perform supervised learning for aircraft exteriors detection.
 `g7_scraping.ipynb`: one single notebook that creates a DataFrame with web links of images to be scrapped, and then performs scrapping.
 All images scrapped, along with the CSV files containing the DataFrames, will be handed in separately.
+The Google Images scraping requiered the installation of Chromedriver  
 
  
 &nbsp;
@@ -57,7 +58,7 @@ Each csv has two columns: 'Picture name' and 'View', which indicates the viewpoi
 
 * g7_seatguru.ipynb + csv
 * g7_instagram.ipynb + csv 
-* g7_hackathon.ipynb + csv
+
 [MERGE IN ONE SINGLE NOTEBOOK]
 
 
