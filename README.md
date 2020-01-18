@@ -82,6 +82,16 @@ For each notebook, the output is a model in `h5`format, along with a pickle file
 
 NB: in each notebook, a cell dedicated to data augmentation can be (un)commented at your convenience. [EXPLAIN WHY DATA AUGMENTATION WAS USEFUL/USELESS IN DIFFERENT CASES]
 
+### 3.3 Hyperparameters optimization
+In order to find the best parameters to use, we tried to use Talos, a library allowing to proceed the equivalent of a GridSearch on Keras models.
+In the notebook, there is an example of how this library can be used on a very simple CNN.
+We didn't apply it on our latter models because this search of the best parameters is time consuming, so we didn't had time to make use of it at the end of the project.
+However, we think it's an interesting method to know for further use. 
+* `g7_talos.ipynb` [TO_ADD] 
+
+### 3.4 Scores
+[ADD scores for each model we choose]
+
 &nbsp;
 ## 4 `Results`
 You can run `g7_pipeline.ipynb` file to perform all our models on images folders.
