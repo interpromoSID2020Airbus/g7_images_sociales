@@ -21,9 +21,9 @@ Under the supervision of Jérôme Farinas.
 &nbsp;
 # Environment
 ## Python version and libraries
-To ensure a proper functioning of all code files, `python 3.5` or later version is required.
+To ensure a proper functioning of all code files, `python 3.6` or later version is required.
+Specific libraries requirements are described in `requirements.txt`. You can run `pip install -r requirements.txt` to install all of them.
 
-The following librairies must be installed: ...
 
 &nbsp;
 ## Tree
@@ -84,6 +84,20 @@ The deep learning algorithms which performed best. The following notebooks train
 For each notebook, the output is a model in `h5`format, along with a pickle file containing a dict of labels (handed in separately, due to GitHub file size limitations).
 
 NB: in each notebook, a cell dedicated to data augmentation can be (un)commented at your convenience. [EXPLAIN WHY DATA AUGMENTATION WAS USEFUL/USELESS IN DIFFERENT CASES]
+
+| Model | Name | Training source | Comments | Train results | Test results |
+| :--- |:---| :---| :--- | :--- | :---
+| View | `g7_view_F.ipynb` | SeatGuru | All SeatGuru images | 1 | 0.9648 |
+| Exterior | `g7_model_ext_F3.ipynb` | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
+|  | `g7_model_ext_F2.ipynb` | Airliners | 1000 images; A320, A321, A330,  A350; 737, 747, 757, 777 | 0.9971 | 0.8479 |
+| Interior manufacturer | `g7_seatguru_int_man_F2.ipynb` | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
+| Interior Boeing | `g7_int_Boeing_F.ipynb` | SeatGuru | 737, 747, 757, 777 | 1 | 0.65 |
+|  | `g7_int_Boeing_F2.ipynb` | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
+| Interior Airbus | `g7_Airbus_Hack_Seatguru_F.ipynb` | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
+|  | `g7_Airbus_Hack_Seatguru_F1.ipynb` | Hackathon + SeatGuru | Same + A340 | 0.9347 | 0.5499 |
+|  | `g7_int_Airbus_Seatguru_F.ipynb` | SeatGuru | A320, A321, A330, A350, A380 | 0.9976 | 0.4241 |
+|  | `g7_int_Airbus_Hackathon_F.ipynb` | Hackathon | A320, A330,  A350, A380 | 0.9975 | 0.6792 |
+
 
 ### 3.3 Hyperparameters optimization
 In order to find the best parameters to use, we tried to use Talos, a library allowing to proceed the equivalent of a GridSearch on Keras models.
