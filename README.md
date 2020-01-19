@@ -65,22 +65,44 @@ Outputs:
 * A notebook with specific functions (e.g. data cropping, data augmentation)
 
 ### 3.2 Models
-[DEEP LEARNING / PIPELINE EXPLANATIONS]
+At first, we tried to understand the problematic in order to define the number and nature of models to train. Our goal was to build a pipeline in which the user could give a set of images as an input, and get a set of predictions (corresponding to several models) as an output (`CSV` file). Finally, the pipeline looks like this:
+
 &nbsp;
 ![](README_images/g7_pipeline.png?raw=true)
 
 &nbsp;
-The deep learning algorithms which performed best. The following notebooks train models to predict:
+You can observe that the pipeline comprises 5 different models. In the `DeepLearning` folder you can find the models which performed best. The following notebooks train models to predict:
 
 * `g7_view.ipynb`: the viewpoint of an image (interior, exterior, exterior viewed from a window, meal tray, or other)
 * `g7_ext.ipynb`: the aircraft types of "exterior" labelled images
 * `g7_int_man.ipynb`: the manufacturer of "interior" labelled images
 * `g7_int_Boeing.ipynb`: the aircraft types of "Boeing interior" labelled images
-* `g7_int_Airbus.ipynb`: the aircraft types of "Airbus interior" labelled images; this specific model uses training images from Hackathon, the one we chose to integrate into our final pipeline. We also trained models on Seatguru images, and on a mix of Hackathon and Seatguru images. [NAME CORRESPONDING NOTEBOOKS + CHECK WHICH MODEL WAS ACTUALLY CHOSEN]
+* `g7_int_Airbus.ipynb`: the aircraft types of "Airbus interior" labelled images.
 
 For each notebook, the output is a model in `h5`format, along with a pickle file containing a dict of labels (handed in separately, due to GitHub file size limitations).
 
+Explanations about our strategy:
+* **View**: At first, the obvious thing to do is to classify every input image into Interior or Exterior category, which are easily separated. After taking a closer look to our images sets we decided to add 2 categories: meal trays (Meal) and Exterior wiewed from a plane window (Ext_Int). For this first classification task, we used SeatGuru images, and the fact that the dataset was unevenly distributed didn't turn out to be a problem, because these 4 categories are very easy to discriminate.
+
+* **Exteriors**: after getting satisfactory results by using a single model to predict simultaneously Airbus and Boeing aircraft types, we chose to keep it that way (instead of having one model to predict aircraft manufacturer and then one model for aircraft type). 
+
+* **Interiors**: the strategy used to pedict Exteriors could not be applied to Interiors, considering that the data provided for Airbus and Boeing was of different nature. We then decided to train one model to predict aircraft manufacturer on interiors, and then one model per aircraft manufacturer to predict types.
+
+    * **Airbus interiors**: 3 models, using respectively: SeatGuru images, Hackathon images, or both. Indeed, Hackathon dataset was more furnished than SeatGuru. For each aircraft type. However, Hackathon images are quite different from chat can be found on social networks, since these are “clean” images, taken by professional photographers, with no people on it. The model chosen for final pipeline is the one which mixes SeatGuru and Hackathon, in `g7_int_Airbus.ipynb`. We also provide you the notebooks used for the Hackathon-only model: `g7_int_Airbus_Hack.ipynb`, and the SeatGuru-only model: `g7_int_Airbus_SeatGuru.ipynb`. 
+
+    * **Boeing**: the only images we had for Boeing aircraft interiors were SeatGuru’s.
+
+In all Interiors cases, the same problem arose: training accuracy converges with 1, whereas validation accuracy stagnates around 0.6 (to check for each model). Since we don’t have that much images, the network learns them by heart but is unable to generalise. We used data augmentation to enrich our datasets, but ........
+A functional example of data augmentation can be found in `g7_int_man.ipynb`.
+
+
+
+
+
+
 NB: in each notebook, a cell dedicated to data augmentation can be (un)commented at your convenience. [EXPLAIN WHY DATA AUGMENTATION WAS USEFUL/USELESS IN DIFFERENT CASES]
+
+
 
 ### 3.3 Hyperparameters optimization
 In order to find the best parameters to use, we tried to use Talos, a library allowing to proceed the equivalent of a GridSearch on Keras models.

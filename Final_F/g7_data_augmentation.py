@@ -7,6 +7,18 @@ from PIL import Image
 
 
 def create_windows_one_img(shape: tuple, img: PIL.Image, nb_win: int, greys: bool) -> list:
+    """Crops images of desired shape from a reference images, by applying sliding windows.
+
+    Parameters:
+        shape: desired shape (height, width)
+        img: reference image
+        nb_win: desired number of windows
+        greys: True if greyscale
+    
+    Out:
+        arrs_crop: kist of arrays (representing images).
+    
+    """
 
     img_arr = np.array(img)
     
@@ -49,16 +61,38 @@ def create_windows_one_img(shape: tuple, img: PIL.Image, nb_win: int, greys: boo
 
 
 def data_augmentation(train_path: str, shape: tuple, save_format: str='jpeg', nb_win: int=3,
-                      coef_gen: int=3, greys: bool=False, rotation_range: int=20, width_shift_range:float=.1,
-                      height_shift_range: float=.1, shear_range: float=.2, zoom_range: float=.15, 
-                      horizontal_flip: bool=True):
+                      coef_gen: int=3, greys: bool=False, rotation_range: int=20,
+                      shear_range: float=.2, zoom_range: float=.15, horizontal_flip: bool=True):
+    """
+    From a directory containing training images, generates new images with data augmentation.
+    Step 1- Crops images of desired shape from a reference images, by applying sliding windows.
+    Step 2- Performs data augmentation on these cropped images, with a keras ImageDataGenerator.
+       The new images will be similar but (de)zoomed / rotated / flipped.
+    
+    Parameters:
+        train_path: path to directory containing training images
+        shape: desired shape (height, width)
+        save_format: format to save images
+        nb_win: desired number of windows
+        coef_gen: coefficient by which the number of images will be multiplied at Step 2
+        greys: True if greyscale
+        rotation_range: degree range for random rotations
+        shear_range: shear Intensity (shear angle in counter-clockwise direction in degrees)
+        zoom_range: range for random zoom
+        horizontal_flip: randomly flip inputs horizontally
+
+    References:
+        1. https://keras.io/preprocessing/image/
+        2. http://deeplearning.lipingyang.org/wp-content/uploads/2016/12/Building-powerful-image-classification-models-using-very-little-data.pdf
+    
+    """
     
     classes = os.listdir(train_path)
     
     datagen = ImageDataGenerator(
             rotation_range=rotation_range,
-            width_shift_range=width_shift_range,
-            height_shift_range=height_shift_range,
+            width_shift_range=.1,
+            height_shift_range=.1,
             shear_range=shear_range,
             zoom_range=zoom_range,
             horizontal_flip=horizontal_flip,
