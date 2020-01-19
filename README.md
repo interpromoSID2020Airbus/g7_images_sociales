@@ -50,7 +50,7 @@ The Google Images scraping requiered the installation of Chromedriver
  
 &nbsp;
 ## 2 `ImagesStats`
-Code to perform basic statistics on the 2 sets of images given by Airbus for prediction. Our goal was to retreive information about the amount of data, images format, and relevant labellisation when possible. The notebook creates `CSV` files with information gathered, and oresents our statistics and conclusions drawn. 
+Code to perform basic statistics on the 2 sets of images given by Airbus for prediction. Our goal was to retreive information about the amount of data, images format, and relevant labellisation when possible. The notebook creates `CSV` files with information gathered, and presents our statistics and conclusions drawn. 
 Code: `g7_imgs_stats.ipynb`
 
 Outputs:
