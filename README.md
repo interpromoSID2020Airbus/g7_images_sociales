@@ -45,32 +45,45 @@ Defined paths in code files (you might have to set project_path yourself):
 # Contents
 ## 1 `Scraping`
 Codes used to scrap Airliners and Google Images in order to get Airbus and Boeing images of several aircraft types.
-We chose to enrich our images datasets to perform supervised learning for aircraft exteriors detection.
-`g7_scraping.ipynb`: one single notebook that creates a DataFrame with web links of images to be scrapped, and then performs scrapping.
-All images scrapped, along with the CSV files containing the DataFrames, will be handed in separately.
-The Google Images scraping requiered the installation of Chromedriver  
+We chose to enrich our images datasets to perform supervised learning for classification tasks on aircraft exteriors images.
+
+`g7_scraping.ipynb`: one single notebook that creates DataFrames with web links of images to be scrapped, and then performs scrapping.
+All images scrapped, along with the `CSV` files containing the DataFrames, will be handed in separately.
+Please note that Google Images scraping requires the installation of ChromeDriver: https://chromedriver.chromium.org/.
+
+Running the whole code takes a bit of time. Since we already performed this scraping task, you don't need to run it again. That said, you can use the code as a template and adapt it to other websites you might want to srcap.
 
  
 &nbsp;
 ## 2 `ImagesStats`
-Code to perform basic statistics on the 2 sets of images given by Airbus for prediction. Our goal was to retreive information about the amount of data, images format, and relevant labellisation when possible. The notebook creates `CSV` files with information gathered, and presents our statistics and conclusions drawn. 
-Code: `g7_imgs_stats.ipynb`
+Code to perform basic statistics on the 2 sets of images given by Airbus for prediction. Our goal was to retreive information about the amount of data, images format, and relevant labellisation when possible. The notebook creates `CSV` files with information gathered, and presents our statistics and conclusions drawn.
+
+Code: `g7_imgs_stats.ipynb`.
 
 Outputs:
-* `g7_INSTAGRAM.csv`: a CSV containing information regarding images formats.
-* `g7_SEATGURU.csv`: a CSV containing information regarding images formats, along with aircraft manufacturer and type labels retreived from images titles, and manually added View labels.
+* `g7_INSTAGRAM.csv`: contains information regarding images formats.
+* `g7_SEATGURU_annotate.csv`: contains information regarding images formats, along with aircraft manufacturer and type labels retreived from images titles, and manually added View labels.
 
 
 &nbsp;
 ## 3 `DeepLearning`
-### 3.1 Functions
-* A notebook with basic functions (e.g. create folders, train test split)
-* A notebook with specific functions (e.g. data cropping, data augmentation)
+This folder contains all code files used to train our deep learning models.
+
+
 
 ### 3.2 Models
 [DEEP LEARNING / PIPELINE EXPLANATIONS]
 &nbsp;
 ![](README_images/g7_pipeline.png?raw=true)
+
+
+
+2 functions files:
+* `g7_functions_for_models.py`: functions to create folders, train-test split imags sets, save models and labels;
+* `g7_data_augmentation.py`: advanced data augmentation function.
+
+
+
 
 &nbsp;
 The deep learning algorithms which performed best. The following notebooks train models to predict:
@@ -101,30 +114,29 @@ NB: in each notebook, a cell dedicated to data augmentation can be (un)commented
 [PRECISIONS ON THE CHOICE OF THE MODELS FOR THE PRED FILES]
 
 ### 3.3 Hyperparameters optimization
-In order to find the best parameters to use, we tried to use Talos, a library allowing to proceed the equivalent of a GridSearch on Keras models.
-In the notebook, there is an example of how this library can be used on a very simple CNN.
-We didn't apply it on our latter models because this search of the best parameters is time consuming, so we didn't had time to make use of it at the end of the project.
-However, we think it's an interesting method to know for further use. 
-* `g7_talos.ipynb`
+In order to find the best parameters to use, we thought about using `talos` to proceed the equivalent of a GridSearch on Keras models: https://github.com/autonomio/talos.
+`g7_talos.ipynb` provides an example of how this library can be used on a very simple CNN.
+Due to time limitations, we did not use this method on the models we trained during the project. That said, we think it's an interesting method to know for further use.
 
-### 3.4 Scores
-[ADD scores for each model we choose]
 
 &nbsp;
 ## 4 `Results`
 You can run `g7_pipeline.ipynb` file to perform all our models on images folders.
 Before launching the pipeline, set the following parameters:
-```
-social_net: name of the folder 
-insta_hashtag: if social_net is 'INSTAGRAM', specify the hashtag
-```
+* `social_net`: name of the folder (social network);
+* `insta_hashtag`: if social_net is 'INSTAGRAM', specify the hashtag.
+
 For the moment you have 2 folders for Seatguru and Instagram. The latter contains 4 subfolders for the following hashtags: airbus, aircraftinterior, aircraftseat, and boeing. You can add new images in any folder and relaunch the pipeline, or create folders for new hashtags and/or social media.
 
-After a pipeline run, you will find CSV files containing predictions in your `Results` folder.
-
+Output: `CSV` files containing predictions (one file per social network / hashtag). We provide you:
+* `pred_INSTAGRAM_airbus.csv`;
+* `pred_INSTAGRAM_aircraftinterior.csv`;
+* `pred_INSTAGRAM_aircraftseat.csv`;
+* `pred_INSTAGRAM_boeing.csv`;
+* `pred_SEATGURU.csv`.
 
 &nbsp;
 This folder also contains: 
-* CSV files obtained from pipeline
-* Code to compute evaluation scores + stats.
+* `g7_Res_SEATGURU_V2.ipynb`: code to compute evaluation scores on SeatGuru images, along with the conclusions drawn;
+* `g7_score_insta.ipynb`: some statistics about the relevance of Instagram hashtags compared to the labels we found.
 
