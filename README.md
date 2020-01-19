@@ -32,11 +32,14 @@ Please make sure your files are organised as follows:
 ![](README_images/g7_tree.png?raw=true)
 
 Paths defined in code files (you might have to set project_path yourself): 
-* project_path: 
-* scrap_path: 
-* hack_path: 
-* seatguru_path: 
-* instgram_path: 
+* project_path = './../'
+* hack_path = project_path + 'InputsHackathon/'
+* seatguru_path = project_path + 'Interpromo2020/All Data/ANALYSE IMAGE/IMG SEATGURU/'
+* insta_path = project_path + 'Interpromo2020/All Data/ANALYSE IMAGE/IMG INSTAGRAM/'
+* scrap_path = project_path + 'Scraping/'
+* airliners_path = scrap_path + 'Airliners/data/'
+* google_path = scrap_path + 'Google_img/'
+* stats_path = project_path + 'ImagesStats/'
 
 &nbsp;
 # Contents
