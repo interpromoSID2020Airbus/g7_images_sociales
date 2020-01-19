@@ -50,16 +50,12 @@ The Google Images scraping requiered the installation of Chromedriver
  
 &nbsp;
 ## 2 `ImagesStats`
-Folder with the codes to create csv files filled with:
-* information found in the titles: manufacturer, aircraft_type;
-* information regarding images formats.
+Code to perform basic statistics on the 2 sets of images given by Airbus for prediction. Our goal was to retreive information about the amount of data, images format, and relevant labellisation when possible. The notebook creates `CSV` files with information gathered, and oresents our statistics and conclusions drawn. 
+Code: `g7_imgs_stats.ipynb`
 
-Each csv has two columns: 'Picture name' and 'View', which indicates the viewpoint of the picture ('Int': interior, 'Ext': exterior, 'Ext_int': picture taken inside the plane but pointing towards the outside, 'Meal' for food trail and 'Others')
-
-* g7_seatguru.ipynb + csv
-* g7_instagram.ipynb + csv 
-
-[MERGE IN ONE SINGLE NOTEBOOK]
+Outputs:
+* `g7_INSTAGRAM.csv`: a CSV containing information regarding images formats.
+* `g7_SEATGURU.csv`: a CSV containing information regarding images formats, along with aircraft manufacturer and type labels retreived from images titles, and manually added View labels.
 
 
 &nbsp;
