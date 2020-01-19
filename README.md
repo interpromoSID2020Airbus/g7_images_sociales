@@ -105,7 +105,7 @@ In order to find the best parameters to use, we tried to use Talos, a library al
 In the notebook, there is an example of how this library can be used on a very simple CNN.
 We didn't apply it on our latter models because this search of the best parameters is time consuming, so we didn't had time to make use of it at the end of the project.
 However, we think it's an interesting method to know for further use. 
-* `g7_talos.ipynb` [TO_ADD] 
+* `g7_talos.ipynb`
 
 ### 3.4 Scores
 [ADD scores for each model we choose]
