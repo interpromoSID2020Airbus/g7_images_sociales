@@ -31,15 +31,15 @@ Please make sure your files are organised as follows:
 &nbsp;
 ![](README_images/g7_tree.png?raw=true)
 
-Paths defined in code files (you might have to set project_path yourself): 
-* project_path = './../'
-* hack_path = project_path + 'InputsHackathon/'
-* seatguru_path = project_path + 'Interpromo2020/All Data/ANALYSE IMAGE/IMG SEATGURU/'
-* insta_path = project_path + 'Interpromo2020/All Data/ANALYSE IMAGE/IMG INSTAGRAM/'
-* scrap_path = project_path + 'Scraping/'
-* airliners_path = scrap_path + 'Airliners/data/'
-* google_path = scrap_path + 'Google_img/'
-* stats_path = project_path + 'ImagesStats/'
+Defined paths in code files (you might have to set project_path yourself): 
+* `project_path` = './../'
+* `hack_path` = `project_path` + 'InputsHackathon/'
+* `seatguru_path` = `project_path` + 'Interpromo2020/All Data/ANALYSE IMAGE/IMG SEATGURU/'
+* `insta_path` = `project_path` + 'Interpromo2020/All Data/ANALYSE IMAGE/IMG INSTAGRAM/'
+* `scrap_path` = `project_path` + 'Scraping/'
+* `airliners_path` = `scrap_path` + 'Airliners/data/'
+* `google_path` = `scrap_path` + 'Google_img/'
+* `stats_path` = `project_path` + 'ImagesStats/'
 
 &nbsp;
 # Contents
@@ -98,6 +98,7 @@ NB: in each notebook, a cell dedicated to data augmentation can be (un)commented
 |  | `g7_int_Airbus_Seatguru_F.ipynb` | SeatGuru | A320, A321, A330, A350, A380 | 0.9976 | 0.4241 |
 |  | `g7_int_Airbus_Hackathon_F.ipynb` | Hackathon | A320, A330,  A350, A380 | 0.9975 | 0.6792 |
 
+[PRECISIONS ON THE CHOICE OF THE MODELS FOR THE PRED FILES]
 
 ### 3.3 Hyperparameters optimization
 In order to find the best parameters to use, we tried to use Talos, a library allowing to proceed the equivalent of a GridSearch on Keras models.
