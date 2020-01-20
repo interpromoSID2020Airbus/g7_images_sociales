@@ -317,21 +317,3 @@ def save_model_classes(path_mod: str, mod_name: str, train_generator, model):
     model.save(path_mod + mod_name + '/' + 'model_' + mod_name + '.h5')
 
 
-def load_files_model(path_mod: str, mod_name: str):
-    """Loads a model
-
-    Parameters:
-        path_mod: path to models folders
-        mod_name: model name
-
-    Out:
-        model: model in h5 format
-        dic_class: dict with classes labels (keys), and correponding integers returned by the model (values)
-
-    """
-
-    model = load_model(path_mod + mod_name + '/' + 'model_' + mod_name + '.h5')
-    with open(path_mod + mod_name + '/' + 'model_' + mod_name + '.pkl', "rb") as f:
-        dic_class = pickle.load(f)
-        
-    return model, dic_class
