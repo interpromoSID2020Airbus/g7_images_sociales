@@ -136,9 +136,7 @@ To conclude, we think that a greater amount of data would be a solution to impro
 
 
 &nbsp;
-Method inspired by:
-
-François Chollet, “Building powerful image classification models using very little data”, The Keras Blog (2016): http://deeplearning.lipingyang.org/wp-content/uploads/2016/12/Building-powerful-image-classification-models-using-very-little-data.pdf
+Method inspired by: François Chollet, “Building powerful image classification models using very little data”, The Keras Blog (2016): http://deeplearning.lipingyang.org/wp-content/uploads/2016/12/Building-powerful-image-classification-models-using-very-little-data.pdf
 
 
 &nbsp;
