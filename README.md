@@ -134,9 +134,8 @@ Moreover, we came to the conclusion that making predictions on social media data
 To conclude, we think that a greater amount of data would be a solution to improve performance. Also, more epochs (iterations) could be performed to train the models (in our case, we trained with a maximum of 20 epochs due to time and resource constraints).
 
 
-
-&nbsp;
-Method inspired by: François Chollet, “Building powerful image classification models using very little data”, The Keras Blog (2016): http://deeplearning.lipingyang.org/wp-content/uploads/2016/12/Building-powerful-image-classification-models-using-very-little-data.pdf
+Method inspired by: François Chollet, “Building powerful image classification models using very little data”, The Keras Blog (2016):
+http://deeplearning.lipingyang.org/wp-content/uploads/2016/12/Building-powerful-image-classification-models-using-very-little-data.pdf
 
 
 &nbsp;
