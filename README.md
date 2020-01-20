@@ -2,23 +2,7 @@
 # <h1 align='center'>g7 - *Images sociales*</h1>
 <p align="justify">
 
-Group 7 was in charge of making predicitons on images scrapped from social media: Instagram and Seatguru. Neural networks were used to predict several levels of classes: general view (aircraft interior / exterior / exterior viewed through a window / meal tray), aircraft manufacturer, and aircraft type.
-
-# Contributors
-* Vincent Barudio
-* Manoel Da Ponte
-* Cheikh Diop
-* Lilian Dulinge
-* Anissa Goulif
-* Emma Grandgirard
-* Gaëlle Hyvert
-* Christelle Latorre
-* Paul Sinel--Boucher
-* Farid Talmat Ammar
-
-
-Under the supervision of Jérôme Farinas. 
-
+Group 7 was in charge of making predicitons on images scrapped from social media: Instagram and Seatguru. We used neural networks to predict several levels of classes: general view (aircraft interior / exterior / exterior viewed through a window / meal tray), aircraft manufacturer, and aircraft type.
 
 &nbsp;
 # Highlights
@@ -33,6 +17,21 @@ We provide you, *inter alia*:
 * An avdanced data augmentation function.
 * Some insights for further use of `talos` library (hyperparameters optimization).
 
+&nbsp;
+# Contributors
+* Vincent Barudio
+* Manoel Da Ponte
+* Cheikh Diop
+* Lilian Dulinge
+* Anissa Goulif
+* Emma Grandgirard
+* Gaëlle Hyvert
+* Christelle Latorre
+* Paul Sinel--Boucher
+* Farid Talmat Ammar
+
+
+Under the supervision of Jérôme Farinas. 
 
 &nbsp;
 # Environment
