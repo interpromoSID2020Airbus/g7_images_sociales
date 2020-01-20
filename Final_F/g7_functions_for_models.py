@@ -12,6 +12,7 @@ import pandas as pd
 from shutil import copyfile
 
 
+
 # =============================================================================
 #                                   SeatGuru
 # =============================================================================
@@ -56,6 +57,7 @@ def create_dirs_seatguru_type(df_seat_annot, project_path, data_path, crea_path,
 
         print(f'{typ}: {len(os.listdir(crea_path + typ))} images')
 
+        
 
 # =======================
 # Train-test split
@@ -170,6 +172,7 @@ def split_train_test_seatguru_man(new_paths: list, seatguru_path: str, airbus_ty
                      new_paths[1] + '/' + man + '/' + img)
 
 
+            
 # =============================================================================
 #                                 Airliners
 # =============================================================================
@@ -236,6 +239,7 @@ def sep_train_test_airliners(airliners_path: str, new_paths: str,
     create_dirs_airliners(airliners_path, new_paths, boeing_types,
                           'Boeing', split_limit, s)
 
+    
 
 # =============================================================================
 #                                   Hackathon
@@ -288,6 +292,7 @@ def split_train_test_hack(new_paths: str, hackathon_path: str, aircraft_types: l
             pass
 
 
+        
 # =============================================================================
 #                               Save and load models
 # =============================================================================
@@ -319,9 +324,14 @@ def load_files_model(path_mod: str, mod_name: str):
         path_mod: path to models folders
         mod_name: model name
 
+    Out:
+        model: model in h5 format
+        dic_class: dict with classes labels (keys), and correponding integers returned by the model (values)
+
     """
 
     model = load_model(path_mod + mod_name + '/' + 'model_' + mod_name + '.h5')
     with open(path_mod + mod_name + '/' + 'model_' + mod_name + '.pkl', "rb") as f:
         dic_class = pickle.load(f)
+        
     return model, dic_class

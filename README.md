@@ -67,52 +67,61 @@ Outputs:
 
 &nbsp;
 ## 3 `DeepLearning`
-This folder contains all code files used to train our deep learning models.
+### 3.1 Pipeline overview
+This directory contains all code files used to train our deep learning models.
 
+At first, we tried to understand the problematic in order to define the number and nature of models to train. Our goal was to build a pipeline in which the user could give a set of images as an input, and get a set of predictions (corresponding to several models) as an output (`CSV` file). Finally, the pipeline looks like this:
 
-
-### 3.2 Models
-[DEEP LEARNING / PIPELINE EXPLANATIONS]
 &nbsp;
 ![](README_images/g7_pipeline.png?raw=true)
 
 
+The blue boxes represent the models we trained.
+* **Viewpoint**: to begin, the obvious thing to do is to classify every input image into Interior or Exterior category, which are easily separated. After taking a closer look at our images sets we decided to add 2 categories: meal trays (Meal) and Exterior wiewed from a plane window (Ext_Int). For this first classification task, we used SeatGuru images, and the fact that the dataset was unevenly distributed didn't turn out to be a problem, because these 4 categories are very easy to discriminate.
 
-2 functions files:
-* `g7_functions_for_models.py`: functions to create folders, train-test split imags sets, save models and labels;
+Then, depending on the predicted class, the image is sent either in the Exterior pipe, Interior pipe, or nowhere (if Ext_Int or Meal).
+
+* **Exteriors** pipe: at first we made some attempts with a 2-step predictor (aircraft manufacturer then aircraft type), but we found out that one single model to predict all Airbus and Boeing aircraft types gave better results.
+* **Interiors** pipe: the strategy used to pedict Exteriors could not be applied to Interiors, considering that the datasets provided for Airbus and Boeing were quite different. We then decided to inclued 2 steps in the pipeline: the image is labelled Airbus or Boeing, then sent to the model which predicts corresponding aircraft types.
+
+
+In most cases, multiple models were trained for one task: with or without data augmentation, more or less classes to predict, one or several sources for training. 
+For clarity purposes, we chose to select and provide you only the ones which performed best in `DeepLearning` directory, along with 2 functions files:
+* `g7_functions_for_models.py`: functions to create directories, train-test split imags sets, save models and labels;
 * `g7_data_augmentation.py`: advanced data augmentation function.
-
-
-
+Please note that in each notebook, an `apply_data_augmentation` cell can be set to `True` at your convenience. `g7_seatguru_int_man_data_augmentation.ipynb` provides a functional data augmentation example.
 
 &nbsp;
-The deep learning algorithms which performed best. The following notebooks train models to predict:
+### 3.2 About the models
+At first, we made some attempts with CNNs built from scratch. Facing disappointing results, we quickly decided to use transfer learning: after getting weights from a pre-trained model (`VGG16`), we add some layers (convolution, denses) at the end to fit the network to our classification task. Transfer learning allowed us to improve our models performance. However, depending on the classification task and the images used for training, we ended up with quite mixed results.
 
-* `g7_view.ipynb`: the viewpoint of an image (interior, exterior, exterior viewed from a window, meal tray, or other)
-* `g7_ext.ipynb`: the aircraft types of "exterior" labelled images
-* `g7_int_man.ipynb`: the manufacturer of "interior" labelled images
-* `g7_int_Boeing.ipynb`: the aircraft types of "Boeing interior" labelled images
-* `g7_int_Airbus.ipynb`: the aircraft types of "Airbus interior" labelled images; this specific model uses training images from Hackathon, the one we chose to integrate into our final pipeline. We also trained models on Seatguru images, and on a mix of Hackathon and Seatguru images. [NAME CORRESPONDING NOTEBOOKS + CHECK WHICH MODEL WAS ACTUALLY CHOSEN]
-
+&nbsp;
+The following table summarises the models trained, associated notebook, comments and results.
 For each notebook, the output is a model in `h5`format, along with a pickle file containing a dict of labels (handed in separately, due to GitHub file size limitations).
-
-NB: in each notebook, a cell dedicated to data augmentation can be (un)commented at your convenience. [EXPLAIN WHY DATA AUGMENTATION WAS USEFUL/USELESS IN DIFFERENT CASES]
 
 | Model | Name | Training source | Comments | Train results | Test results |
 | :--- |:---| :---| :--- | :--- | :---
-| View | `g7_view_F.ipynb` | SeatGuru | All SeatGuru images | 1 | 0.9648 |
-| Exterior | `g7_model_ext_F3.ipynb` | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
+| View | **`g7_view_F.ipynb*`** | SeatGuru | All SeatGuru images | 1 | 0.9648 |
+| Exterior | **`g7_model_ext_F3.ipynb*`** | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
 |  | `g7_model_ext_F2.ipynb` | Airliners | 1000 images; A320, A321, A330,  A350; 737, 747, 757, 777 | 0.9971 | 0.8479 |
-| Interior manufacturer | `g7_seatguru_int_man_F2.ipynb` | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
+| Interior manufacturer | **`g7_seatguru_int_man_F2.ipynb*`** | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
 | Interior Boeing | `g7_int_Boeing_F.ipynb` | SeatGuru | 737, 747, 757, 777 | 1 | 0.65 |
-|  | `g7_int_Boeing_F2.ipynb` | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
-| Interior Airbus | `g7_Airbus_Hack_Seatguru_F.ipynb` | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
+|  | **`g7_int_Boeing_F2.ipynb*`** | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
+| Interior Airbus | **`g7_Airbus_Hack_Seatguru_F.ipynb*`** | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
 |  | `g7_Airbus_Hack_Seatguru_F1.ipynb` | Hackathon + SeatGuru | Same + A340 | 0.9347 | 0.5499 |
 |  | `g7_int_Airbus_Seatguru_F.ipynb` | SeatGuru | A320, A321, A330, A350, A380 | 0.9976 | 0.4241 |
 |  | `g7_int_Airbus_Hackathon_F.ipynb` | Hackathon | A320, A330,  A350, A380 | 0.9975 | 0.6792 |
 
-[PRECISIONS ON THE CHOICE OF THE MODELS FOR THE PRED FILES]
+* : model chosen for the final pipeline.
 
+
+
+Method inspired by:
+
+François Chollet, “Building powerful image classification models using very little data”, The Keras Blog (2016): http://deeplearning.lipingyang.org/wp-content/uploads/2016/12/Building-powerful-image-classification-models-using-very-little-data.pdf
+
+
+&nbsp;
 ### 3.3 Hyperparameters optimization
 In order to find the best parameters to use, we thought about using `talos` to proceed the equivalent of a GridSearch on Keras models: https://github.com/autonomio/talos.
 `g7_talos.ipynb` provides an example of how this library can be used on a very simple CNN.
@@ -121,12 +130,12 @@ Due to time limitations, we did not use this method on the models we trained dur
 
 &nbsp;
 ## 4 `Results`
-You can run `g7_pipeline.ipynb` file to perform all our models on images folders.
+You can run `g7_pipeline.ipynb` file to perform all our models on images directories.
 Before launching the pipeline, set the following parameters:
-* `social_net`: name of the folder (social network);
+* `social_net`: name of the directory (social network);
 * `insta_hashtag`: if social_net is 'INSTAGRAM', specify the hashtag.
 
-For the moment you have 2 folders for Seatguru and Instagram. The latter contains 4 subfolders for the following hashtags: airbus, aircraftinterior, aircraftseat, and boeing. You can add new images in any folder and relaunch the pipeline, or create folders for new hashtags and/or social media.
+For the moment you have 2 directories for Seatguru and Instagram. The latter contains 4 subdirectories for the following hashtags: airbus, aircraftinterior, aircraftseat, and boeing. You can add new images in any directory and relaunch the pipeline, or create directories for new hashtags and/or social media.
 
 Output: `CSV` files containing predictions (one file per social network / hashtag). We provide you:
 * `pred_INSTAGRAM_airbus.csv`;
@@ -136,7 +145,7 @@ Output: `CSV` files containing predictions (one file per social network / hashta
 * `pred_SEATGURU.csv`.
 
 &nbsp;
-This folder also contains: 
+This directory also contains: 
 * `g7_Res_SEATGURU_V2.ipynb`: code to compute evaluation scores on SeatGuru images, along with the conclusions drawn;
 * `g7_score_insta.ipynb`: some statistics about the relevance of Instagram hashtags compared to the labels we found.
 
