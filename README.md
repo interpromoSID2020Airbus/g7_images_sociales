@@ -1,4 +1,4 @@
-![](README_images/header.JPG?raw=true)
+![](README_images/g7_header.png?raw=true)
 # <h1 align='center'>g7 - *Images sociales*</h1>
 <p align="justify">
 
