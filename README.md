@@ -48,7 +48,7 @@ Defined paths in code files (you might have to set project_path yourself):
 Codes used to scrap Airliners and Google Images in order to get Airbus and Boeing images of several aircraft types.
 We chose to enrich our images datasets to perform supervised learning for classification tasks on aircraft exteriors images.
 
-`g7_scraping.ipynb`: one single notebook that creates DataFrames with web links of images to be scrapped, and then performs scrapping.
+`g7_scraping.ipynb`: one single notebook that creates DataFrames with web links of images to be scrapped, and then performs scraping.
 All images scrapped, along with the `CSV` files containing the DataFrames, will be handed in separately.
 Please note that Google Images scraping requires the installation of ChromeDriver: https://chromedriver.chromium.org/.
 
@@ -102,16 +102,16 @@ For each notebook, the output is a model in `h5`format, along with a pickle file
 
 | Model | Name | Training source | Comments | Train results | Test results |
 | :--- |:---| :---| :--- | :--- | :---
-| View | **`g7_view_F.ipynb**`** | SeatGuru | All SeatGuru images | 1 | 0.9648 |
-| Exterior | **`g7_model_ext_F3.ipynb**`** | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
-|  | `g7_model_ext_F2.ipynb` | Airliners | 1000 images; A320, A321, A330,  A350; 737, 747, 757, 777 | 0.9971 | 0.8479 |
-| Interior manufacturer | **`g7_seatguru_int_man_F2.ipynb**`** | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
-| Interior Boeing | `g7_int_Boeing_F.ipynb` | SeatGuru | 737, 747, 757, 777 | 1 | 0.65 |
-|  | **`g7_int_Boeing_F2.ipynb**`** | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
-| Interior Airbus | **`g7_Airbus_Hack_Seatguru_F.ipynb**`** | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
-|  | `g7_Airbus_Hack_Seatguru_F1.ipynb` | Hackathon + SeatGuru | Same + A340 | 0.9347 | 0.5499 |
-|  | `g7_int_Airbus_Seatguru_F.ipynb` | SeatGuru | A320, A321, A330, A350, A380 | 0.9976 | 0.4241 |
-|  | `g7_int_Airbus_Hackathon_F.ipynb` | Hackathon | A320, A330,  A350, A380 | 0.9975 | 0.6792 |
+| View | **`g7_view_f.ipynb**`** | SeatGuru | All SeatGuru images | 1 | 0.9648 |
+| Exterior | **`g7_model_ext_f3.ipynb**`** | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
+|  | `g7_model_ext_f2.ipynb` | Airliners | 1000 images; A320, A321, A330,  A350; 737, 747, 757, 777 | 0.9971 | 0.8479 |
+| Interior manufacturer | **`g7_seatguru_int_man_f2.ipynb**`** | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
+| Interior Boeing | `g7_int_Boeing_f.ipynb` | SeatGuru | 737, 747, 757, 777 | 1 | 0.65 |
+|  | **`g7_int_Boeing_f2.ipynb**`** | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
+| Interior Airbus | **`g7_Airbus_Hack_Seatguru_f.ipynb**`** | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
+|  | `g7_Airbus_Hack_Seatguru_f1.ipynb` | Hackathon + SeatGuru | Same + A340 | 0.9347 | 0.5499 |
+|  | `g7_int_Airbus_Seatguru_f.ipynb` | SeatGuru | A320, A321, A330, A350, A380 | 0.9976 | 0.4241 |
+|  | `g7_int_Airbus_Hackathon_f.ipynb` | Hackathon | A320, A330,  A350, A380 | 0.9975 | 0.6792 |
 
 ** : model chosen for the final pipeline.
 
@@ -121,7 +121,7 @@ Some explanation about our choices for the final pipeline:
 The chosen model is not the one with the greatest valid accuracy, but we believe that the model is better because it has more target classes and therefore can be more useful when integrated in the pipeline.
 
 **Interiors**:
-- **Manufacturer model**: SeatGuru is the only data source containing both Airbus and Boeing images, so we didn't have much choice for our training set. The results could be better with more training images.
+- **Manufacturer**: SeatGuru is the only data source containing both Airbus and Boeing images, so we didn't have much choice for our training set. The results could be better with more training images.
 - **Airbus aircraft types**: the model which combines Hackathon and SeatGuru images doesn’t work as well as the Hackathon-only model, but it allows us to perform training on the A321 class, which is required in the project specifications. That explains our choice for the final pipeline.
 - **Boeing aircraft types**: the two models delivered where tested each with a different number of aircraft types. Both models end up with similar results. Morevover, we observed that increasing the number of epochs didn’t result in any kind of improvment.
 
@@ -158,14 +158,14 @@ Before launching the pipeline, set the following parameters:
 For the moment you have 2 directories for Seatguru and Instagram. The latter contains 4 subdirectories for the following hashtags: airbus, aircraftinterior, aircraftseat, and boeing. You can add new images in any directory and relaunch the pipeline, or create directories for new hashtags and/or social media.
 
 Output: `CSV` files containing predictions (one file per social network / hashtag). We provide you:
-* `pred_INSTAGRAM_airbus.csv`;
-* `pred_INSTAGRAM_aircraftinterior.csv`;
-* `pred_INSTAGRAM_aircraftseat.csv`;
-* `pred_INSTAGRAM_boeing.csv`;
-* `pred_SEATGURU.csv`.
+* `g7_pred_INSTAGRAM_airbus.csv`;
+* `g7_pred_INSTAGRAM_aircraftinterior.csv`;
+* `g7_pred_INSTAGRAM_aircraftseat.csv`;
+* `g7_pred_INSTAGRAM_boeing.csv`;
+* `g7_pred_SEATGURU.csv`.
 
 &nbsp;
 This directory also contains: 
-* `g7_Res_SEATGURU_V2.ipynb`: code to compute evaluation scores on SeatGuru images, along with the conclusions drawn;
+* `g7_seatguru_results.ipynb` and `g7_seatguru_analysis`: code to compute evaluation scores on SeatGuru images, and display confusion matrices and histograms;
 * `g7_score_insta.ipynb`: some statistics about the relevance of Instagram hashtags compared to the labels we found.
 
