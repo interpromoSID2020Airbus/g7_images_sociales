@@ -89,7 +89,7 @@ Then, depending on the predicted class, the image is sent either in the Exterior
 In most cases, multiple models were trained for one task: with or without data augmentation, more or less classes to predict, one or several sources for training. 
 For clarity purposes, we chose to select and provide you only the ones which performed best in `DeepLearning` directory, along with 2 functions files:
 * `g7_functions_for_models.py`: functions to create directories, train-test split imags sets, save models and labels;
-* `g7_data_augmentation.py`: advanced data augmentation function.
+* `g7_data_augmentation.py`: advanced data augmentation function which generates new images by cropping, zooming, rotating, flipping, or shifting existing images. That way a model can be trained on a wider variety of examples, and get better at generalising.
 Please note that in each notebook, an `apply_data_augmentation` cell can be set to `True` at your convenience. `g7_seatguru_int_man_data_augmentation.ipynb` provides a functional data augmentation example.
 
 &nbsp;
@@ -102,21 +102,40 @@ For each notebook, the output is a model in `h5`format, along with a pickle file
 
 | Model | Name | Training source | Comments | Train results | Test results |
 | :--- |:---| :---| :--- | :--- | :---
-| View | **`g7_view_F.ipynb*`** | SeatGuru | All SeatGuru images | 1 | 0.9648 |
-| Exterior | **`g7_model_ext_F3.ipynb*`** | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
+| View | **`g7_view_F.ipynb**`** | SeatGuru | All SeatGuru images | 1 | 0.9648 |
+| Exterior | **`g7_model_ext_F3.ipynb**`** | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
 |  | `g7_model_ext_F2.ipynb` | Airliners | 1000 images; A320, A321, A330,  A350; 737, 747, 757, 777 | 0.9971 | 0.8479 |
-| Interior manufacturer | **`g7_seatguru_int_man_F2.ipynb*`** | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
+| Interior manufacturer | **`g7_seatguru_int_man_F2.ipynb**`** | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
 | Interior Boeing | `g7_int_Boeing_F.ipynb` | SeatGuru | 737, 747, 757, 777 | 1 | 0.65 |
-|  | **`g7_int_Boeing_F2.ipynb*`** | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
-| Interior Airbus | **`g7_Airbus_Hack_Seatguru_F.ipynb*`** | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
+|  | **`g7_int_Boeing_F2.ipynb**`** | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
+| Interior Airbus | **`g7_Airbus_Hack_Seatguru_F.ipynb**`** | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
 |  | `g7_Airbus_Hack_Seatguru_F1.ipynb` | Hackathon + SeatGuru | Same + A340 | 0.9347 | 0.5499 |
 |  | `g7_int_Airbus_Seatguru_F.ipynb` | SeatGuru | A320, A321, A330, A350, A380 | 0.9976 | 0.4241 |
 |  | `g7_int_Airbus_Hackathon_F.ipynb` | Hackathon | A320, A330,  A350, A380 | 0.9975 | 0.6792 |
 
-* : model chosen for the final pipeline.
+** : model chosen for the final pipeline.
+
+Some explanation about our choices for the final pipeline:
+
+**Exteriors**:
+The chosen model is not the one with the greatest valid accuracy, but we believe that the model is better because it has more target classes and therefore can be more useful when integrated in the pipeline.
+
+**Interiors**:
+- **Manufacturer model**: SeatGuru is the only data source containing both Airbus and Boeing images, so we didn't have much choice for our training set. The results could be better with more training images.
+- **Airbus aircraft types**: the model which combines Hackathon and SeatGuru images doesn’t work as well as the Hackathon-only model, but it allows us to perform training on the A321 class, which is required in the project specifications. That explains our choice for the final pipeline.
+- **Boeing aircraft types**: the two models delivered where tested each with a different number of aircraft types. Both models end up with similar results. Morevover, we observed that increasing the number of epochs didn’t result in any kind of improvment.
+
+Besides, for all Interiors models the same problem arose: training accuracy converged with 1, whereas validation accuracy stagnated around 0.6. Since we didn’t have that much images, the network learnt them by heart and proved unable to generalise. 
+
+The lack of relevant labelled data was a big issue in this project, and our data augmentation solution was not enough to properly deal with it. 
+
+Moreover, we came to the conclusion that making predictions on social media data requires training on similar images: Hackathon images are too “clean” (and, above all, people-free) compared to SeatGuru or Instagram images, which probably explains the mitigated results obtained for Airbus aircraft interiors.
+
+To conclude, we think that a greater amount of data would be a solution to improve performance. Also, more epochs (iterations) could be performed to train the models (in our case, we trained with a maximum of 20 epochs due to time and resource constraints).
 
 
 
+&nbsp;
 Method inspired by:
 
 François Chollet, “Building powerful image classification models using very little data”, The Keras Blog (2016): http://deeplearning.lipingyang.org/wp-content/uploads/2016/12/Building-powerful-image-classification-models-using-very-little-data.pdf
