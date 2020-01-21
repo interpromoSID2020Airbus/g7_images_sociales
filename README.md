@@ -140,7 +140,7 @@ The chosen model is not the one with the greatest valid accuracy, but we believe
 
 Besides, for all Interiors models the same problem arose: training accuracy converged with 1, whereas validation accuracy stagnated around 0.6. Since we didn’t have that much images, the network learnt them by heart and proved unable to generalise. 
 
-The lack of relevant labelled data was a big issue in this project, and our data augmentation solution was not enough to properly deal with it. 
+The lack of relevant labelled data was a big issue in this project, and our data augmentation solution was not enough to properly deal with it. Data ugmentation increased our tretment time without increasing and sometimes even decreasing our validation accuracy. Consequently, the models used in the pipeline were not created using it.
 
 Moreover, we came to the conclusion that making predictions on social media data requires training on similar images: Hackathon images are too “clean” (and, above all, people-free) compared to SeatGuru or Instagram images, which probably explains the mitigated results obtained for Airbus aircraft interiors.
 
