@@ -118,12 +118,12 @@ For each notebook, the output is a model in `h5`format, along with a pickle file
 | Model | Notebook name | Training source | Comments | Train results | Test results |
 | :--- |:---| :---| :--- | :--- | :---
 | View (`View`) | **`g7_view_f.ipynb**`** | SeatGuru | All SeatGuru images | 1 | 0.9648 |
-| Exterior (`Ext_typ`) | **`g7_model_ext_f3.ipynb**`** | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
+| Exteriors - type (`Ext_typ`) | **`g7_model_ext_f3.ipynb**`** | Airliners | 500 images; A320, A321, A330, A340, A350, A380; 737, 747, 757, 777, 787 | 0.9932 | 0.7745 |
 |  | `g7_model_ext_f2.ipynb` | Airliners | 1000 images; A320, A321, A330,  A350; 737, 747, 757, 777 | 0.9971 | 0.8479 |
-| Interior manufacturer (`Int_man`) | **`g7_seatguru_int_man_f2.ipynb**`** | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
-| Interior Boeing (`Int_Boeing`) | `g7_int_Boeing_f.ipynb` | SeatGuru | 737, 747, 757, 777 | 1 | 0.65 |
+| Interiors - manufacturer (`Int_man`) | **`g7_seatguru_int_man_f2.ipynb**`** | SeatGuru | All Airbus & Boeing images | 0.9991 | 0.6141 |
+| Interiors - Boeing (`Int_Boeing`) | `g7_int_Boeing_f.ipynb` | SeatGuru | 737, 747, 757, 777 | 1 | 0.65 |
 |  | **`g7_int_Boeing_f2.ipynb**`** | SeatGuru | 737, 747, 757, 777, 767, 787 | 1 | 0.65 |
-| Interior Airbus (`Int_Airbus`) | **`g7_Airbus_Hack_Seatguru_f.ipynb**`** | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
+| Interiors - Airbus (`Int_Airbus`) | **`g7_Airbus_Hack_Seatguru_f.ipynb**`** | Hackathon + SeatGuru | A320, A321, A330,  A350, A380 | 0.9917 | 0.6052 |
 |  | `g7_Airbus_Hack_Seatguru_f1.ipynb` | Hackathon + SeatGuru | Same + A340 | 0.9347 | 0.5499 |
 |  | `g7_int_Airbus_Seatguru_f.ipynb` | SeatGuru | A320, A321, A330, A350, A380 | 0.9976 | 0.4241 |
 |  | `g7_int_Airbus_Hackathon_f.ipynb` | Hackathon | A320, A330,  A350, A380 | 0.9975 | 0.6792 |
@@ -198,7 +198,6 @@ The models could be more robust if trained with images coming from more diverse 
 For aircraft types detection in Exteriors (`Ext_typ`), the accuracy is very low: **14%** for 11 models taken into account whereas the model performed well on Airliners images.
 Our hypothesis is that images taken by professional photographers and images taken by travellers are quite different. Thus, Airliners is probably not the best choice to train the model.
 
-To conclude, a unique source for the training doesn’t seem to be a good way to create a model able to generalize.
-Furthermore, to train model able of generalization, a bigger amount of data is needed.
+To conclude, a unique source for the training doesn’t seem to be a good way to create a model able to generalize well, and a greater amount of data is needed.
 
 
