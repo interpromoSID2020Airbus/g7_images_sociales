@@ -147,7 +147,7 @@ The lack of relevant labelled data was a big issue in this project, and our data
 
 Moreover, we came to the conclusion that making predictions on social media data requires training on similar images: Hackathon images are too “clean” (and, above all, people-free) compared to Instagram images (and even SeatGuru), which probably explains the mitigated results obtained for Airbus aircraft interiors.
 
-To conclude, we think that a greater amount of data would be a solution to improve performance. Also, more epochs (iterations) could be performed to train the models (in our case, we trained with a maximum of 20 epochs due to time and resource constraints).
+To conclude, we think that a greater amount of data would be a solution to improve performance. Also, more epochs (iterations) could be performed to train the models (in our case, we trained with a maximum of 20 epochs due to time and resource constraints). However, except for Airliners, for which more data was available, we didn't find any improvment between a training with 10 epochs and a training with 2O epochs.
 
 
 Method inspired by: François Chollet, “Building powerful image classification models using very little data”, The Keras Blog (2016):
