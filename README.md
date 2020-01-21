@@ -58,14 +58,16 @@ Defined paths in code files (you might have to set project_path yourself):
 &nbsp;
 # Contents
 ## 1 `Scraping`
+
+To know before scraping: Airliners images are subject to copyright. 
+
 Codes used to scrap Airliners and Google Images in order to get Airbus and Boeing images of several aircraft types.
 We chose to enrich our images datasets to perform supervised learning for classification tasks on aircraft exteriors images.
 
 `g7_scraping.ipynb`: one single notebook that creates DataFrames with web links of images to be scrapped, and then performs scraping.
-All images scrapped, along with the `CSV` files containing the DataFrames, will be handed in separately.
 Please note that Google Images scraping requires the installation of ChromeDriver: https://chromedriver.chromium.org/.
 
-Running the whole code takes a bit of time. Since we already performed this scraping task, you don't need to run it again. That said, you can use the code as a template and adapt it to other websites you might want to srcap.
+Running the whole code takes a bit of time.
 
  
 &nbsp;
@@ -178,4 +180,32 @@ Output: `CSV` files containing predictions (one file per social network / hashta
 This directory also contains: 
 * `g7_seatguru_results.ipynb` and `g7_seatguru_analysis`: code to compute evaluation scores on SeatGuru images, and display confusion matrices and histograms;
 * `g7_score_insta.ipynb`: some statistics about the relevance of Instagram hashtags compared to the labels we found.
+
+After the model choice, the pipeline was runned on Seat Guru images.
+
+The scores calculation are presented on g7_seatguru_results.ipynb.
+
+We reached a very high score for the viewpoint : 98,9 % without taking into account images classified as Others and 96,7 % if they are taken into account.
+
+We tried to compare probabilities obtained on Airbus and Boeing against probabilities for other constructors, but we didn’t reach any conclusion enabling to distinguished them.
+
+For the manufacturer detection on interior, the score seems satisfying at first glance but must be taken carefully :
+Indeed : 
+* with only Airbus and Boeing, the score reach 88 %.
+* when taking into account all manufacturers, the score is 75 %.
+
+However, while we reached near 1 in accuracy score for the training part, and 0.60 for the test part, we can’t excluded that this score is due to the training part learnt by heart.
+
+Images coming from an another social media are needed to know if the model is robust.
+Furthermore, few people are present on Seatguru images, whereas, there are lots of selfies on Instagram.
+
+For the aircraft model in exterior, the accuracy score is very low : 14 % for 11 models taken into account whereas the model was well performing on Airliners. 
+Our hypothesis is that images taken by professional and images take by travelers are quite different. So, perhaps Airliners is not the best choice to conceive the model.
+
+To conclude, a unique source for the training doesn’t seem to be a good way to create a model able of generalization.
+Furthermore, to train model able of generalization, a bigger amount of data is needed.
+
+
+
+
 
