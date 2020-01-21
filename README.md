@@ -60,7 +60,7 @@ Defined paths in code files (you might have to set project_path yourself):
 # Contents
 ## 1 `Scraping`
 
-To know before scraping: Airliners images are subject to copyright. 
+**To know before scraping: Airliners images are subject to copyright.** 
 
 Codes used to scrap Airliners and Google Images in order to get Airbus and Boeing images of several aircraft types.
 We chose to enrich our images datasets to perform supervised learning for classification tasks on aircraft exteriors images.
