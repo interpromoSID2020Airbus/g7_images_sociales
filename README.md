@@ -181,6 +181,7 @@ This directory also contains:
 * `g7_score_insta.ipynb`: some statistics about the relevance of Instagram hashtags compared to the labels we found from the pipeline;
 * `g7_seatguru_results.ipynb` and `g7_seatguru_analysis.ipynb`: code to compute evaluation scores after the pipleine was run on SeatGuru images, and display confusion matrices and histograms.
 
+&nbsp;
 ### Some insights about our results (SeatGuru)
 The `View` model obtained very high scores: **98,9%** without considering images classified as "Others", and **96,7%** with "Others".
 
